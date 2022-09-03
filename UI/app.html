@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Classification</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="shortcut icon" href="./images/image-gallery.png" type="image/x-icon">
+    <link rel="stylesheet" href="./dropzone.min.css">
+    <link rel="stylesheet" href="./app.css">
+</head>
+
+<body>
+    <!-- <nav class="navbar navbar-light bg-light justify-content-center py-0">
+        <a class="navbar-brand" href="#">Image Classification</a>
+    </nav> -->
+
+    <div class="header">
+
+        <!--Content before waves-->
+        <div class="inner-header flex">
+        <img class="logo" src="./images/image-gallery.png" alt="">
+        <h1>Image Classification</h1>
+        </div>
+        
+        <!--Waves Container-->
+        <div>
+        <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+        <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+        <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+        <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+        <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+        <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+        </g>
+        </svg>
+        </div>
+        <!--Waves end-->
+        
+        </div>
+        <!--Header ends-->
+        <br>
+        <div class="container">
+            <div class="row">
+            <div class="col card-wrapper" data-player="Dakota_Johnson">
+                    <div class="card border-0">
+                        <div class="position-relative rounded-circle overflow-hidden mx-auto custom-circle-image image-cropper">
+                            <img class="w-100 h-100" src="./images/Dakota_Johnson.jpg" alt="Card image cap">
+                        </div>
+                        <div class="card-body text-center mt-4">
+                            <h4 class="text-uppercase card-title">Dakota Johnson</h4>
+                            </p>
+                        </div>
+                    </div>
+                </div>            
+                <div class="col card-wrapper" data-player="Derek_Drouin">
+                        <div class="card border-0">
+                            <div class="position-relative rounded-circle overflow-hidden mx-auto custom-circle-image image-cropper">
+                                <img class="w-100 h-100" src="./images/Derek_Drouin.jpg" alt="Card image cap">
+                            </div>
+                            <div class="card-body text-center mt-4">
+                                <h4 class="text-uppercase card-title">Derek Drouin</h4>
+                                </p>
+                            </div>
+                        </div>
+                </div>            
+                <div class="col card-wrapper" data-player="Elon_Musk">
+                        <div class="card border-0">
+                            <div class="position-relative rounded-circle overflow-hidden mx-auto custom-circle-image image-cropper">
+                                <img class="w-100 h-100" src="./images/Elon_Musk.jpg" alt="Card image cap">
+                            </div>
+                            <div class="card-body text-center mt-4">
+                                <h4 class="text-uppercase card-title">Elon Musk</h4>
+                                </p>
+                            </div>
+                        </div>
+                </div>          
+    
+                <div class="col card-wrapper" data-player="Narendra_Modi">
+                    <div class="card border-0">
+                        <div class="position-relative rounded-circle overflow-hidden mx-auto custom-circle-image image-cropper">
+                            <img class="w-100 h-100" src="./images/Narendra_Modi.jpg" alt="Card image cap">
+                        </div>
+                        <div class="card-body text-center mt-4">
+                            <h4 class="text-uppercase card-title">Narendra Modi</h4>
+                            </p>
+                        </div>
+                    </div>
+                </div>      
+    
+                <div class="col card-wrapper" data-player="Tom_Cruise">
+                    <div class="card border-0">
+                        <div class="position-relative rounded-circle overflow-hidden mx-auto custom-circle-image image-cropper">
+                            <img class="w-100 h-100" src="./images/Tom_Cruise.jpg" alt="Card image cap">
+                        </div>
+                        <div class="card-body text-center mt-4">
+                            <h4 class="text-uppercase card-title">Tom Cruise</h4>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+    
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="row">
+                        <div class="col-12 mx-auto">
+                            <form action="/file-upload" class="dropzone" id="dropzone">
+                                <div class="dz-message needsclick">
+                                    <img src="./images/upload.png" width="50vw" height="50vw"><br>
+                                    <span class="note needsclick">Drop files here or click to upload</span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-3 mx-auto">
+                            <button id="submitBtn" type="button" class="btn btn-success">Classify</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-8 error" id="error" >
+                    <p>Can't classify image. Classifier was not able to detect face and two eyes properly</p>    
+                </div>
+    
+                <div class="col-sm-4" id="resultHolder">
+                </div>
+                <div class="col-sm-4" id="divClassTable">
+                    <table id="classTable">
+                            <tr>
+                                <th>Player</th>
+                                <th>Probability Score</th>
+                            </tr>
+                            <tr>
+                                <td>Dakota Johnson</td>
+                                <td id="score_Dakota_Johnson"></td>
+                            </tr>
+                            <tr>
+                                <td>Derek Drouin</td>
+                                <td id="score_Derek_Drouin"></td>
+                            </tr>
+                            <tr>
+                                <td>Elon Musk</td>
+                                <td id="score_Elon_Musk"></td>
+                            </tr>
+                            <tr>
+                                <td>Narendra Modi</td>
+                                <td id="score_Narendra_Modi"></td>
+                            </tr>
+                            <tr>
+                                <td>Tom Cruise</td>
+                                <td id="score_Tom_Cruise"></td>
+                            </tr>
+                    </table>
+                </div>
+                
+            </div>
+    
+        </div>
+
+    
+    <!--Content starts-->
+    <div class="content flex">
+      <p>Made with ❤️ By Aryan Kashyap</p>
+    </div>
+    <!--Content ends-->
+
+</body>
+<!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="./dropzone.min.js"></script>
+<script src="./app.js"></script>
+</html>
