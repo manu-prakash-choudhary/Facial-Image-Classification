@@ -40,6 +40,15 @@ Then you can run the application by opening the index.html file in the browser [
 
 ---
 
+<h2>Features</h2>
+
+- [x] Detect faces in images
+- [x] User friendly UI
+- [x] Predict names of the faces detected
+- [ ] Deploy the model on the web
+
+---
+
 <h4>License</h4>
 
 This project is licensed under the Apache License - see the [LICENSE](LICENSE) file for details.
